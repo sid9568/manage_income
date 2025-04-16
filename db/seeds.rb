@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'faker'
+
+10.times do
+  Transaction.create!(
+    title: Faker::Commerce.product_name,
+    amount: rand(50..5000),
+    category: %w[Income Expense].sample,
+    date: Faker::Date.between(from: 1.month.ago, to: Date.today),
+    description: Faker::Lorem.sentence
+  )
+end

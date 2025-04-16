@@ -67,6 +67,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+group :development, :test do
+  gem 'faker'
+end
 
 gem "tailwindcss-ruby", "~> 4.1"
 

@@ -107,6 +107,8 @@ GEM
     drb (2.2.1)
     error_highlight (0.7.0)
     erubi (1.13.1)
+    faker (3.5.1)
+      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     groupdate (6.5.1)
@@ -287,6 +289,7 @@ DEPENDENCIES
   chartkick
   debug
   error_highlight (>= 0.4.0)
+  faker
   groupdate
   importmap-rails
   jbuilder

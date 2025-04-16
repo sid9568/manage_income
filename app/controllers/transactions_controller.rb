@@ -1,8 +1,12 @@
 class TransactionsController < ApplicationController
-before_action :set_transaction, only: [:edit, :update, :destroy]
+  before_action :set_transaction, only: [:edit, :update, :destroy]
 
   def index
-    @transactions = Transaction.all.order(updated_at: :desc, date: :desc)
+    @transactions = Transaction
+    .recent
+    .from_date(params[:start_date])
+    .to_date(params[:end_date])
+    .by_category(params[:category])
   end
 
   def new
