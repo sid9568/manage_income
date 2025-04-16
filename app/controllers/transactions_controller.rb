@@ -1,7 +1,8 @@
 class TransactionsController < ApplicationController
+before_action :set_transaction, only: [:edit, :update, :destroy]
 
   def index
-    @transactions = Transaction.all.order(date: :desc)
+    @transactions = Transaction.all.order(updated_at: :desc, date: :desc)
   end
 
   def new
@@ -28,17 +29,19 @@ class TransactionsController < ApplicationController
     end
   end
 
-  def show
+  def destroy
+    @transaction.destroy
+    redirect_to transactions_path
   end
 
   private
 
-  def set_transaction
-    @transaction = Transaction.find(params[:id])
-  end
-
   def transaction_params
     params.require(:transaction).permit(:title, :amount, :category, :date, :description)
+  end
+
+  def set_transaction
+    @transaction = Transaction.find(params[:id])
   end
 
 end

@@ -25,11 +25,11 @@
                 <td class="px-6 py-4"><%=transaction.title%></td>
                 <td class="px-6 py-4"><%=transaction.amount%></td>
                 <td class="px-6 py-4"><%=transaction.category%></td>
-                <td class="px-6 py-4 text-green-600 font-medium"><%=transaction.description%></td>
-                <td class="px-6 py-4 text-green-600 font-medium flex">
-                  <%=link_to "Edit", class: "bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-medium"%>
-                  <%=button_to "Delete",class:"bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm font-medium" %>
-                </td>
+                <td class="px-6 py-4"><%=transaction.description%></td>
+                <td class="px-6 py-4 text-green-600 font-medium flex" style="gap: 6px;">
+                <%= link_to "Edit", edit_transaction_path(id: transaction.id), class: "bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-medium" %>
+                <%= button_to "Delete", transaction, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm font-medium" %>
+              </td>
               </tr>
               <%end%>
             </tbody>
