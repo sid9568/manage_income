@@ -4,14 +4,14 @@
      <section class="bg-white p-6 rounded-xl shadow">
         <div class="flex justify-between">
         <h2 class="text-lg font-semibold mb-1 text-gray-800">Recent Transactions</h2>
-        <a href="" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md text-md font-semibold mb-2">Add Transactions</a>
+        <a href="<%=new_transaction_path%>" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md text-md font-semibold mb-2">Add Transactions</a>
         </div>
         <div class="overflow-x-auto">
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
               <tr>
                 <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Id</th>
-                <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">User</th>
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Title</th>
                 <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Amount</th>
                 <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Date</th>
                 <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Description</th>
@@ -19,31 +19,19 @@
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
+              <%@transactions.each do |transaction|%>
               <tr>
-                <td class="px-6 py-4">1</td>
-                <td class="px-6 py-4">John Doe</td>
-                <td class="px-6 py-4">$120.00</td>
-                <td class="px-6 py-4">2025-04-15</td>
-                <td class="px-6 py-4 text-green-600 font-medium">Success</td>
+                <td class="px-6 py-4"><%=transaction.id%></td>
+                <td class="px-6 py-4"><%=transaction.title%></td>
+                <td class="px-6 py-4"><%=transaction.amount%></td>
+                <td class="px-6 py-4"><%=transaction.category%></td>
+                <td class="px-6 py-4 text-green-600 font-medium"><%=transaction.description%></td>
                 <td class="px-6 py-4 text-green-600 font-medium flex">
                   <%=link_to "Edit", class: "bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-medium"%>
                   <%=button_to "Delete",class:"bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm font-medium" %>
                 </td>
               </tr>
-              <tr>
-                <td class="px-6 py-4">2</td>
-                <td class="px-6 py-4">Jane Smith</td>
-                <td class="px-6 py-4">$85.00</td>
-                <td class="px-6 py-4">2025-04-14</td>
-                <td class="px-6 py-4 text-yellow-500 font-medium">Pending</td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4">3</td>
-                <td class="px-6 py-4">Alice Brown</td>
-                <td class="px-6 py-4">$230.00</td>
-                <td class="px-6 py-4">2025-04-12</td>
-                <td class="px-6 py-4 text-red-500 font-medium">Failed</td>
-              </tr>
+              <%end%>
             </tbody>
           </table>
         </div>
